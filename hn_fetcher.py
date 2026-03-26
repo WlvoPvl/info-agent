@@ -10,14 +10,14 @@ from config import HN_BASE_URL, MAX_POSTS_PER_SOURCE
 def get_top_stories(limit: int = MAX_POSTS_PER_SOURCE) -> List[int]:
     """获取热门故事ID列表"""
     url = f"{HN_BASE_URL}/topstories.json"
-    response = requests.get(url)
+    response = requests.get(url, proxies={"http": None, "https": None})
     return response.json()[:limit]
 
 
 def get_story_details(story_id: int) -> Dict:
     """获取单个故事详情"""
     url = f"{HN_BASE_URL}/item/{story_id}.json"
-    response = requests.get(url)
+    response = requests.get(url, proxies={"http": None, "https": None})
     return response.json()
 
 

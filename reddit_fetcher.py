@@ -31,7 +31,7 @@ def search_reddit(keyword: str, limit: int = MAX_POSTS_PER_SOURCE) -> List[Dict]
     }
 
     try:
-        response = requests.get(url, params=params, headers=headers, timeout=10)
+        response = requests.get(url, params=params, headers=headers, timeout=10, proxies={"http": None, "https": None})
         response.raise_for_status()
         data = response.json()
     except Exception as e:
@@ -73,7 +73,7 @@ def get_subreddit_hot(subreddit: str, limit: int = MAX_POSTS_PER_SOURCE) -> List
     }
 
     try:
-        response = requests.get(url, params=params, headers=headers, timeout=10)
+        response = requests.get(url, params=params, headers=headers, timeout=10, proxies={"http": None, "https": None})
         response.raise_for_status()
         data = response.json()
     except Exception as e:
